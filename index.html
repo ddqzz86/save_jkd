@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" />
+<title>保卫计科导</title>
+<!--参考了https://gitee.com/kamiba/js_tower_defense_step_by_step -->
+</head>
+<body>
+
+<img src="img/enemy.png" id="enemy_img" style="display:none;" />
+<img src="img/tower.png" id="tower_img" style="display:none;" />
+<img src="img/bullet.png" id="bullet_img" style="display:none;" />
+<img src="img/btn.png" id="btn_img" style="display:none;" />
+
+<div id="game" style="position:relative;float:left;width:600px;height:500px;">
+	<canvas id="map" width="500" height="500" style="background:url(img/bg.png) repeat;position:absolute;left:0;top:0;z-index:99;"></canvas>
+	<canvas id="main" width="500" height="500" style="position:absolute;left:0;top:0;z-index:100;"></canvas>
+	<canvas id="tower" width="500" height="500" style="position:absolute;left:0;top:0;z-index:100;"></canvas>
+	<canvas id="select" width="500" height="500" style="position:absolute;left:0;top:0;z-index:101;"></canvas>
+	<canvas id="info" width="100" height="500" style="background-color:black;position:absolute;left:500px;top:0;z-index:102;"></canvas>
+</div>
+
+<div style="float:left;width:500px;margin-left:50px;">
+	
+	<p>
+		计科导开课啦，但学校里的小怪兽总趁同学上课的时候捣乱，让我们用起所学知识，保卫礼堂，保卫计科导，保卫国科大！<br/><br/>
+		说明：点击拖动防御塔到指定区域，点击可用原价升级或以半价出售。当有10只小怪兽进入礼堂时游戏就输了<br />
+		1.计科导课本：普通攻击，升级到3级，有温故而知新功能，每攻击一次会得到1点知识。<br/>
+		2.图灵机实验：使用纸带对怪兽进行减速攻击，3级时可以同时减速两个。<br/>
+		3.网络实验：使用网络对怪兽进行多重攻击，可以一次攻击多个目标。<br/>
+		4.班级排序实验：把排好队的小怪兽串起来打，进行一条线上的穿刺攻击，攻击力最高。<br/>
+		5.信息隐藏实验：有一定几率找到小怪兽隐藏的弱点把敌人秒杀。<br/>
+		选择地图<select id="select_map"><option value="1">地图一</option><option value="2">地图二</option></select>,然后按<input type="button" value="开始" onclick="startGame()" />开始游戏！
+	</p>
+	
+</div>
+
+
+<script type="text/javascript" src="js/tools.js"></script>
+<script type="text/javascript" src="js/MapData.js"></script>
+<script type="text/javascript" src="js/Map.js"></script>
+<script type="text/javascript" src="js/Info.js"></script>
+<script type="text/javascript" src="js/Enemy.js"></script>
+<script type="text/javascript" src="js/Tower.js"></script>
+<script type="text/javascript" src="js/Bullet.js"></script>
+<script type="text/javascript" src="js/Game.js"></script>
+
+<script type="text/javascript">
+	
+    var isStart = false;
+    
+	function startGame(){
+		
+        if(!isStart)Game.start();
+        else Game.restart();
+        
+        isStart = true;
+	}
+	
+</script>
+
+</body>
+</html>
